@@ -5,7 +5,7 @@
 <p align="center"> A league custom creator </p>
 
 <p align="center">
-> <a href="https://github.com/swojtczak/Praktyki-2022-05/pulls"> Report a 🐛</a> <
+> <a href="https://github.com/Kepedoc/CustomLeague/pulls"> Report a 🐛</a> <
 </p>
 
 ## About The Project :mag:
