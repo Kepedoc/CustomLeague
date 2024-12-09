@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    
+}
+
+body {
+    color: #C8AA6E;
+    background-image: url("image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 90vh;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh; /* Wysokość całego menu */
+    position: fixed; /* Przyklejenie do góry ekranu */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    margin: 0; /* Brak marginesów */
+}
+
+/* gradient */
+
+.menu-item, .menu-item-ready, .menu-item-random {
+    position: relative;
+    overflow: hidden; /* Zapobiega wychodzeniu gradientu poza element */
+    background: linear-gradient(to top, #0e1b3b, #1c3b5b); /* Domyślny gradient od dołu do góry */
+    transition: background-color 0.2s ease; /* Płynne przejście koloru */
+}
+
+.menu-item-ready::before, .menu-item-random::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1000%;
+    height: 1000%;
+    background: linear-gradient(rgba(255, 255, 255, 0.5) 40%, transparent 60%);
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Gradient nie blokuje interakcji */
+    opacity: 0; /* Domyślnie ukryty */
+    transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+.menu-item:hover::before, .menu-item-ready:hover::before, .menu-item-random:hover::before {
+    opacity: 1; /* Pokazanie gradientu na hover */
+}
+
+/* gradient */
+
+.menu-item, .menu-item-ready, .menu-item-empty, .menu-item-random{
+    background-color: #0e1b3b;
+    flex: 1;
+    text-align: center;
+    padding: 10px 0; /* Margines wewnętrzny góra/dół */
+    height: 70%; /* Wypełnienie całego menu */
+    border-style: ridge;
+    border-width: 8px;
+    border-color: #C8AA6E;
+    font-size: 1rem;
+    margin-top: -3vh;
+    border-radius: 0px 0 25px 25px;
+    font-size: 1.2rem;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100%;
+}
+.menu-item-random{
+    font-weight: bold;
+    font-family: 'Orbitron';
+    border-radius: 0 0 25px 0 ;
+    border-left: 0;
+    color: #C8AA6E;
+}
+
+.menu-item-ready {
+    font-family: 'Orbitron';
+    font-size: 3rem;
+    font-weight: bold;
+    height: 100%;
+    margin-top: auto;
+    border-radius: 0px 0 25px 25px;
+    color: #C8AA6E;
+}
+.menu-item-ready:hover {
+    background-color: #1c3b5b;
+    color: #C89B3C;
+    cursor: pointer;
+}
+.menu-item-empty {
+    border-style:hidden;
+    opacity: 0;
+}
+
+.content {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-around;
+    margin: 10vh auto; /* Odstęp od góry, by nie nachodziło na menu */
+    text-align: center;
+    padding-top: 10vh;
+}
+
+.discord-link-container {
+    margin: 50px 0; /* Większy odstęp między elementami */
+}
+
+.discord-link {
+    background-color: #1c3b5b;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.league-title {
+    font-family: 'Planet Kosmos', sans-serif;
+    margin: 50px 0;
+    font-size: 5rem;
+    font-weight: bold;
+    color: #F0E6D2;
+
+}
+
+.icon, .icon2 {
+    overflow: hidden; /* Zapobiega wychodzeniu gradientu poza element */
+    background: linear-gradient(to top, #0e1b3b, #1c3b5b); /* Domyślny gradient od dołu do góry */
+    transition: background-color 0.2s ease; /* Płynne przejście koloru */
+    border: solid;
+    border-style: groove;
+    border-width: 8px;
+    border-color: #C8AA6E;
+    width: 30vw;
+    height:10vh;
+    background-color: #1c3b5b;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 3rem;
+    font-family: 'Beaufort';
+    padding-top: 10px;
+}
+
+.icon2{ 
+    border-style:ridge;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    float: left;
+    height: 60vh;
+}
+img {
+    width: 100%;
+    height: auto;
+}
+.discord{
+    width: 80%;
+    height: auto;
+    border-radius: 50px;
+}
+.delete{
+    display: flex;
+    
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    float: left;
+    height: 60vh;
+}
+.deleteWraper{
+    height: 10vh;
+}
+#left{
+    display: flex;
+    flex-wrap: wrap;
+}
+.backIndex{
+    font-weight: bold;
+    font-family: 'Orbitron';
+    border-radius: 0 5px 0 0 ;
+    border-left: 0;
+    color: #C8AA6E;
+}
