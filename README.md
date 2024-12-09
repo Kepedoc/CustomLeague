@@ -1,6 +1,6 @@
 # <p align="center">Custom League</p>
 
-![image](Images/LogoBlue5.png)
+![image](Images/logoBlue5.png)
 
 <p align="center"> A league custom creator </p>
 
