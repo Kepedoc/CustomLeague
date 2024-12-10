@@ -15,14 +15,15 @@
 //}
 
 function winrate1(){
+console.log("ch");
     let str = document.getElementById("winrate1").innerText;
     let lastCh = str.charAt(str.length - 1);
-    if (lastCh != '%'){
-        let wins = document.getElementById("winrate1").getAttribute("data-winrate");
-        document.getElementById("winrate1").innerHTML = wins;
+    if (lastCh == '%' || str == "Not played yet"){
+        document.getElementById("winrate1").innerHTML = document.getElementById("winrate1").getAttribute("data-nick");
+console.log("1");
     }else{
-        let nick = document.getElementById("winrate1").getAttribute("data-nick");
-        document.getElementById("winrate1").innerHTML = nick;
+	document.getElementById("winrate1").innerHTML = document.getElementById("winrate1").getAttribute("data-winrate");
+console.log("2");
     }
 }
 

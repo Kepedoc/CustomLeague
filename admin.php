@@ -14,7 +14,7 @@ session_start();
 </head>
 <?php
 
-$conn = new mysqli('localhost', 'root', '', 'loc');
+$conn = new mysqli('localhost', 'root', '', 'LOC');
 if ($conn->connect_error) {
     die('Błąd połączenia: ' . $conn->connect_error);
 }
@@ -119,6 +119,9 @@ if (isset($_GET['victory1'])){ //wygrana drużyna 1 otrzymuje pukt wina i gry w 
         <a href="admin.php?drop=true" ><button type="submit" style="border-radius: 0px 0 25px 0; border-left: 0;" class="menu-item-random">DROP</button></a>
         <div class="menu-item-empty"></div>
     </div>
+    <div class="mobileLogo">
+        <a href="index.php"><img src="logoBlue5.png" alt="logo"></a>
+    </div>
     <div class="content">
         <div id="left" class="container">
             <div class="icon2"><?php echo "<a href='admin.php?victory1=true'>Victory!</a></div>";?>
@@ -144,6 +147,10 @@ if (isset($_GET['victory1'])){ //wygrana drużyna 1 otrzymuje pukt wina i gry w 
             <div class="icon2"><?php echo "$nicki[9]"; echo "<a href='admin.php?nick=$nicki[9]'><button>del</button></a></div>";?>
             <div class="icon2"><?php echo "$nicki[10]"; echo "<a href='admin.php?nick=$nicki[10]'><button>del</button></a></div>";?>
         </div>
+        <div class="mobileDiscord">
+            <a href="https://discord.gg/Gyr6DQBq3u" target="_blank"><img class="discord" src="discord2.1.png" alt="Discord-Link"></a>
+                <!-- <button class="discord-link"><a href="https://discord.gg/Gyr6DQBq3u">Discord Link</a></button> -->
+            </div>
     </div>  
     <script src="script.js"></script>
 </body>
