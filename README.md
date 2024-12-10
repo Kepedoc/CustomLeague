@@ -10,7 +10,7 @@
 
 ## About The Project :mag:
 
-This project is a Solution to a problem me and my friends had while playing custom games in League of Legends. ...
+This project is a Solution to a problem me and my friends had while playing custom games in League of Legends. We created this webpage to automate the process of finding players that want to play and than randomizing the teams and thanks to the webpage we are able to play custom matches seamlessly.
 
 ## Build with🏗️
 
