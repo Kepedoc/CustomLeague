@@ -14,7 +14,7 @@ session_start();
 </head>
 <?php
 
-$conn = new mysqli('localhost', 'root', '', 'LOC');
+$conn = new mysqli('localhost', 'raspberry', 'admin', 'LOC');
 if ($conn->connect_error) {
     die('Błąd połączenia: ' . $conn->connect_error);
 }

@@ -14,7 +14,7 @@ session_start();
     <script src="myscripts.js"></script>
 </head>
 <?php
-$conn = new mysqli('localhost', 'root', '', 'LOC'); // łączenie z bazą danych
+$conn = new mysqli('localhost', 'raspberry', 'admin', 'LOC'); // łączenie z bazą danych
 if ($conn->connect_error) {
     die('Błąd połączenia: ' . $conn->connect_error);
 }
