@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
-    
+    font-size: 100%;    
 }
 
 body {
@@ -60,7 +60,6 @@ body {
     background-color: #0e1b3b;
     flex: 1;
     text-align: center;
-    padding: 10px 0; /* Margines wewnętrzny góra/dół */
     height: 70%; /* Wypełnienie całego menu */
     border-style: ridge;
     border-width: 8px;
@@ -79,6 +78,14 @@ body {
     border-radius: 0 0 25px 0 ;
     border-left: 0;
     color: #C8AA6E;
+    position: relative;
+}
+span{
+  position: absolute;
+  top: 20%;
+  transform: translateX(-50%);
+  width: 100%;
+  font-family: inherit;
 }
 
 .menu-item-ready {
@@ -198,4 +205,70 @@ img {
     border-radius: 0 5px 0 0 ;
     border-left: 0;
     color: #C8AA6E;
+}
+
+/* zachowanie strony na mobilnych urzadzienach */
+
+@media screen and (max-width: 600px){
+    body {
+        color: #C8AA6E;
+        background-image: url("mobileImage.png"); /* obrocone tlo o -90 stopni */
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 90vh;
+        overflow-y: hidden;
+    }
+    .menu-item, .menu-item-ready, .menu-item-empty, .menu-item-random{
+        border-width: 4px; /* zmiena wielkość obramówki na 4 */
+        font-size: 1rem; /* zmiena wielkość fontu z 1.2 na 1 */
+    }
+    .container{
+        height: 50vh; /* zmiena wielkość flexa z 60 na 70 */
+    }
+    #left{
+        font-size: 1rem; /* zmiena wielkość fontu z 1.2 na 1 */
+    }
+    .icon, .icon2 {
+        border-width: 4px;
+        width: 45vw;
+        height: 8vh;
+        font-size: 1.2rem;
+        padding-top: 1.5vh;
+    }
+    .mobileLogo{
+        padding-top: 70px;
+        padding-bottom: 0px;
+        height: 30vh;
+    }
+    .mobileDiscord{
+        padding-top: 10px;
+        padding-bottom: 0px;
+        height: 30vh;
+    }
+    img {
+        width: auto;
+        height: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .content{
+        padding: 0;
+        margin: 0;
+    }
+
+}
+
+@media(min-width: 601px) {
+    .mobileLogo{
+    display: none;
+    }
+    .mobileDiscord{
+        display: none;
+    }
+  }
+
+@media only screen and (max-device-width: 600px) {
+   #logos{display: none;} /* nie wyświetla Logo loc i dc */
+   .league-logo{display: none;}
 }
