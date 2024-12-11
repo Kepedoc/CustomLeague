@@ -10,11 +10,18 @@ session_start();
     <link rel="icon" type="image/x-icon" href="favicon.png">
     <link href="https://fonts.cdnfonts.com/css/planet-kosmos" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap" rel="stylesheet">
     <title>Custom League</title>
     <script src="myscripts.js"></script>
 </head>
 <?php
-$conn = new mysqli('localhost', 'raspberry', 'admin', 'LOC'); // łączenie z bazą danych
+$config = require 'conf.php';
+$conn = new mysqli(
+    $config['host'],
+    $config['username'],
+    $config['password'],
+    $config['database']
+); // łączenie z bazą danych
 if ($conn->connect_error) {
     die('Błąd połączenia: ' . $conn->connect_error);
 }
@@ -101,13 +108,13 @@ while($row = $resultGetRandomNicks->fetch_assoc()){
 <form id="form" method="POST" action="index.php">
     <div class="menu">
         <div class="menu-item-empty"></div>
-        <input type="text" name="nickname" style="border-radius: 0px 0 0 25px; border-right: 0; color: #C8AA6E;" placeholder="Nick z lola" class="menu-item" required>
+        <input type="text" name="nickname" style="border-radius: 0px 0 0 25px; border-right: 0; color: #C8AA6E;" placeholder="nick z lola:" class="menu-item" required>
         <button type="submit" value="Ready" class="menu-item-ready">Ready</button>
         <?php 
             if (isset($_GET['wylosowne'])){
-                echo "<a href='index.php' class='menu-item-random'><span>Powrót</span></a>";
+                echo "<a href='index.php' class='menu-item-random'><span class='random_span'>Powrót</span></a>";
             }else{
-                echo "<a href='index.php?wylosowne=TRUE' class='menu-item-random'><span>Pokaż wylosowane</span></a>";
+                echo "<a href='index.php?wylosowne=TRUE' class='menu-item-random'><span class='random_span'>Pokaż wylosowane</span></a>";
             }
         ?>
         <div class="menu-item-empty"></div>
@@ -128,11 +135,11 @@ while($row = $resultGetRandomNicks->fetch_assoc()){
                 <div class='icon'><a class='nicki'>$losoweNicki[5]</a></div>";
                 }else{
                     echo "
-                <div id='winrate1' onclick='winrate1()' data-winrate='$winRateStr[1]' data-nick='$nicki[1]' class='icon'><a class='nicki'>$nicki[1]</a></div>
-                <div id='winrate2' onclick='winrate2()' data-winrate='$winRateStr[2]' data-nick='$nicki[2]' class='icon'><a class='nicki'>$nicki[2]</a></div> 
-                <div id='winrate3' onclick='winrate3()' data-winrate='$winRateStr[3]' data-nick='$nicki[3]' class='icon'><a class='nicki'>$nicki[3]</a></div>
-                <div id='winrate4' onclick='winrate4()' data-winrate='$winRateStr[4]' data-nick='$nicki[4]' class='icon'><a class='nicki'>$nicki[4]</a></div>
-                <div id='winrate5' onclick='winrate5()' data-winrate='$winRateStr[5]' data-nick='$nicki[5]' class='icon'><a class='nicki'>$nicki[5]</a></div>";
+                <div id='winrate1' onclick='winrate(1)' data-winrate='$winRateStr[1]' data-nick='$nicki[1]' class='icon'><a class='nicki'>$nicki[1]</a></div>
+                <div id='winrate2' onclick='winrate(2)' data-winrate='$winRateStr[2]' data-nick='$nicki[2]' class='icon'><a class='nicki'>$nicki[2]</a></div> 
+                <div id='winrate3' onclick='winrate(3)' data-winrate='$winRateStr[3]' data-nick='$nicki[3]' class='icon'><a class='nicki'>$nicki[3]</a></div>
+                <div id='winrate4' onclick='winrate(4)' data-winrate='$winRateStr[4]' data-nick='$nicki[4]' class='icon'><a class='nicki'>$nicki[4]</a></div>
+                <div id='winrate5' onclick='winrate(5)' data-winrate='$winRateStr[5]' data-nick='$nicki[5]' class='icon'><a class='nicki'>$nicki[5]</a></div>";
                 }
                 ?>
         </div>
@@ -141,8 +148,7 @@ while($row = $resultGetRandomNicks->fetch_assoc()){
                 <a href="index.php"><img src="logoBlue5.png" alt="logo"></a>
             </div>
             <div class="discord-link-container">
-            <a href="https://discord.gg/Gyr6DQBq3u" target="_blank"><img class="discord" src="discord2.1.png" alt="Discord-Link"></a>
-                <!-- <button class="discord-link"><a href="https://discord.gg/Gyr6DQBq3u">Discord Link</a></button> -->
+                <a href="https://discord.gg/Gyr6DQBq3u" target="_blank"><img class="discord" src="discord2.1.png" alt="Discord-Link"></a>
             </div>
         </div>
         <div id="right" class="container">
@@ -156,19 +162,19 @@ while($row = $resultGetRandomNicks->fetch_assoc()){
                 <div class='icon'><a class='nicki'>$losoweNicki[10]</a></div>";
                 }else{
                     echo "
-                <div id='winrate6' onclick='winrate6()' data-winrate='$winRateStr[6]' data-nick='$nicki[6]' class='icon'><a class='nicki'>$nicki[6]</a></div>
-                <div id='winrate7' onclick='winrate7()' data-winrate='$winRateStr[7]' data-nick='$nicki[7]' class='icon'><a class='nicki'>$nicki[7]</a></div>
-                <div id='winrate8' onclick='winrate8()' data-winrate='$winRateStr[8]' data-nick='$nicki[8]' class='icon'><a class='nicki'>$nicki[8]</a></div>
-                <div id='winrate9' onclick='winrate9()' data-winrate='$winRateStr[9]' data-nick='$nicki[9]' class='icon'><a class='nicki'>$nicki[9]</a></div>
-                <div id='winrate10' onclick='winrate10()' data-winrate='$winRateStr[10]' data-nick='$nicki[10]' class='icon'><a class='nicki'>$nicki[10]</a></div>";
+                <div id='winrate6' onclick='winrate(6)' data-winrate='$winRateStr[6]' data-nick='$nicki[6]' class='icon'><a class='nicki'>$nicki[6]</a></div>
+                <div id='winrate7' onclick='winrate(7)' data-winrate='$winRateStr[7]' data-nick='$nicki[7]' class='icon'><a class='nicki'>$nicki[7]</a></div>
+                <div id='winrate8' onclick='winrate(8)' data-winrate='$winRateStr[8]' data-nick='$nicki[8]' class='icon'><a class='nicki'>$nicki[8]</a></div>
+                <div id='winrate9' onclick='winrate(9)' data-winrate='$winRateStr[9]' data-nick='$nicki[9]' class='icon'><a class='nicki'>$nicki[9]</a></div>
+                <div id='winrate10' onclick='winrate(10)' data-winrate='$winRateStr[10]' data-nick='$nicki[10]' class='icon'><a class='nicki'>$nicki[10]</a></div>";
                 }
-                ?>
+            ?>
         </div>
+    </div>    
         <div class="mobileDiscord">
             <a href="https://discord.gg/Gyr6DQBq3u" target="_blank"><img class="discord" src="discord2.1.png" alt="Discord-Link"></a>
-                <!-- <button class="discord-link"><a href="https://discord.gg/Gyr6DQBq3u">Discord Link</a></button> -->
-            </div>
-    </div>
+        </div>
+    
 
 </body>
 </html>
