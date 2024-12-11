@@ -2,8 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
-    font-size: 100%;    
+    font-size: 100%;
+    overflow-y: hidden;
 }
 
 body {
@@ -11,7 +11,7 @@ body {
     background-image: url("image.png");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 90vh;
+    height: 100vh;
 }
 
 .menu {
@@ -64,33 +64,27 @@ body {
     border-style: ridge;
     border-width: 8px;
     border-color: #C8AA6E;
-    font-size: 1rem;
     margin-top: -3vh;
     border-radius: 0px 0 25px 25px;
-    font-size: 1.2rem;
+    font-size: 2vh;
     text-align: center;
     vertical-align: middle;
     line-height: 100%;
 }
 .menu-item-random{
     font-weight: bold;
-    font-family: 'Orbitron';
+    font-family: "Nova Mono", serif;
     border-radius: 0 0 25px 0 ;
     border-left: 0;
     color: #C8AA6E;
-    position: relative;
-}
-span{
-  position: absolute;
-  top: 20%;
-  transform: translateX(-50%);
-  width: 100%;
-  font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .menu-item-ready {
+    font-size: 5vh;
     font-family: 'Orbitron';
-    font-size: 3rem;
     font-weight: bold;
     height: 100%;
     margin-top: auto;
@@ -156,8 +150,10 @@ a {
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 3rem;
-    font-family: 'Beaufort';
-    padding-top: 10px;
+    font-family: "Nova Mono", serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon2{ 
@@ -206,21 +202,40 @@ img {
     border-left: 0;
     color: #C8AA6E;
 }
-
+.random_span{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+input::placeholder {
+    font-weight: bold;
+    font-family: "Nova Mono", serif;
+  }
 /* zachowanie strony na mobilnych urzadzienach */
 
 @media screen and (max-width: 600px){
+    .random_span{
+        font-size: 2vh;
+    }
+    input.menu-item{
+        width: 100%;
+    }
+    .menu-item-ready{
+        font-size: 4vh;
+        border-width: 4px; /* zmiena wielkość obramówki na 4 */
+    }
     body {
         color: #C8AA6E;
         background-image: url("mobileImage.png"); /* obrocone tlo o -90 stopni */
         background-repeat: no-repeat;
         background-size: cover;
-        height: 90vh;
+        height: 100vh;
         overflow-y: hidden;
     }
-    .menu-item, .menu-item-ready, .menu-item-empty, .menu-item-random{
+    .menu-item, .menu-item-empty, .menu-item-random{
         border-width: 4px; /* zmiena wielkość obramówki na 4 */
-        font-size: 1rem; /* zmiena wielkość fontu z 1.2 na 1 */
+        font-size: 2vh; /* zmiena wielkość fontu z 1.2 na 1 */
     }
     .container{
         height: 50vh; /* zmiena wielkość flexa z 60 na 70 */
@@ -233,7 +248,7 @@ img {
         width: 45vw;
         height: 8vh;
         font-size: 1.2rem;
-        padding-top: 1.5vh;
+        font-size: 3vh;
     }
     .mobileLogo{
         padding-top: 70px;
@@ -256,6 +271,16 @@ img {
         padding: 0;
         margin: 0;
     }
+    /* nie wyświetla Logo loc i dc */
+    .league-logo{
+        display: none;
+    }
+    #logos{
+        display: none;
+    } 
+    .menu-item-empty{
+        display: none;
+    }
 
 }
 
@@ -267,8 +292,3 @@ img {
         display: none;
     }
   }
-
-@media only screen and (max-device-width: 600px) {
-   #logos{display: none;} /* nie wyświetla Logo loc i dc */
-   .league-logo{display: none;}
-}
