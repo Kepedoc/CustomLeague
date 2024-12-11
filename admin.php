@@ -14,7 +14,14 @@ session_start();
 </head>
 <?php
 
-$conn = new mysqli('localhost', 'raspberry', 'admin', 'LOC');
+$config = require 'conf.php';
+$conn = new mysqli(
+    $config['host'],
+    $config['username'],
+    $config['password'],
+    $config['database']
+); // łączenie z bazą danych
+
 if ($conn->connect_error) {
     die('Błąd połączenia: ' . $conn->connect_error);
 }
