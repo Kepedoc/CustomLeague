@@ -78,7 +78,6 @@ $wins = array('','','','','','','','','','','');
 $gamesPlayed = array('','','','','','','','','','','');
 $winRateArr = array('','','','','','','','','','','');
 $winRateStr = array('','','','','','','','','','','');
-// $funArg = array('','','','','','','','','','','');
 $sqlGetWinrate = "SELECT user.NICK, wins.nick, wins.win, wins.games FROM `user` JOIN `wins` on user.NICK = wins.nick;";
 $resultGetWinrate = mysqli_query($conn,$sqlGetWinrate);
 $indexWinrate = 1;

@@ -6,15 +6,15 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/x-icon" href="../favicon.png">
     <link href="https://fonts.cdnfonts.com/css/planet-kosmos" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet'>
     <title>Custom League</title>
 </head>
 <?php
 
-$config = require 'conf.php';
+$config = require '../conf.php';
 $conn = new mysqli(
     $config['host'],
     $config['username'],
@@ -121,13 +121,13 @@ if (isset($_GET['victory1'])){ //wygrana drużyna 1 otrzymuje pukt wina i gry w 
 <body>
     <div class="menu">
         <div class="menu-item-empty"></div>
-        <a href="index.php" ><button type="submit" style="border-radius: 0px 0 0 25px; border-right: 0; color: #C8AA6E;" class="menu-item">Index</button></a>
-        <form action="index.php" method="POST"><button type="submit" name="losuj" value="true" class="menu-item-ready">Losuj</button></form>
+        <a href="../index.php" ><button type="submit" style="border-radius: 0px 0 0 25px; border-right: 0; color: #C8AA6E;" class="menu-item">Index</button></a>
+        <form action="../index.php" method="POST"><button type="submit" name="losuj" value="true" class="menu-item-ready">Losuj</button></form>
         <a href="admin.php?drop=true" ><button type="submit" style="border-radius: 0px 0 25px 0; border-left: 0;" class="menu-item-random">DROP</button></a>
         <div class="menu-item-empty"></div>
     </div>
     <div class="mobileLogo">
-        <a href="index.php"><img src="logoBlue5.png" alt="logo"></a>
+        <a href="../index.php"><img src="../logoBlue5.png" alt="logo"></a>
     </div>
     <div class="content">
         <div id="left" class="container">
@@ -140,10 +140,10 @@ if (isset($_GET['victory1'])){ //wygrana drużyna 1 otrzymuje pukt wina i gry w 
         </div>
         <div class="container">
             <div class="league-logo">
-                <a href="admin.php"><img src="logoBlue5.png" alt="logo"></a>
+                <a href="admin.php"><img src="../logoBlue5.png" alt="logo"></a>
             </div>
             <div class="discord-link-container">
-                <a href="https://discord.gg/Gyr6DQBq3u" target="_blank"><img class="discord" src="discord2.png"></a>
+                <a href="https://discord.gg/Gyr6DQBq3u" target="_blank"><img class="discord" src="../discord2.1.png"></a>
             </div>
         </div>
         <div id="right" class="container">
@@ -155,11 +155,11 @@ if (isset($_GET['victory1'])){ //wygrana drużyna 1 otrzymuje pukt wina i gry w 
             <div class="icon2"><?php echo "$nicki[10]"; echo "<a href='admin.php?nick=$nicki[10]'><button>del</button></a></div>";?>
         </div>
         <div class="mobileDiscord">
-            <a href="https://discord.gg/Gyr6DQBq3u" target="_blank"><img class="discord" src="discord2.1.png" alt="Discord-Link"></a>
+            <a href="https://discord.gg/Gyr6DQBq3u" target="_blank"><img class="discord" src="../discord2.1.png" alt="Discord-Link"></a>
                 <!-- <button class="discord-link"><a href="https://discord.gg/Gyr6DQBq3u">Discord Link</a></button> -->
             </div>
     </div>  
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html>
 
