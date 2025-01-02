@@ -40,7 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') { // dodawanie użytkownika
 
 $sql3 = "SELECT NICK FROM user LIMIT 10"; // wypisywanie niewylosowanych
 $result = mysqli_query($conn, $sql3);
-$nicki = array('','','','','','','','','','','');
+$nicki = array();
+$nicki = array_fill(1,10,"");
 if ($result->num_rows > 0) {
     $index = 1; 
     while($row = $result->fetch_assoc()) {
@@ -50,7 +51,7 @@ if ($result->num_rows > 0) {
 }
 
 if (isset($_POST['losuj'])){ // tworzenie tablicy z randomowymi nickami i wstawienie ich do bazy
-    $losoweNicki = array('','','','','','','','','','','');
+    $losoweNicki = array();
     foreach($nicki as $x){
         $randIndex = rand(1,10);
         $powtuz = true;
@@ -74,29 +75,32 @@ if (isset($_POST['losuj'])){ // tworzenie tablicy z randomowymi nickami i wstawi
     }
 }
 
-$wins = array('','','','','','','','','','','');
-$gamesPlayed = array('','','','','','','','','','','');
-$winRateArr = array('','','','','','','','','','','');
-$winRateStr = array('','','','','','','','','','','');
+$wins = array();
+$wins = array_fill(1,10,'');
+$gamesPlayed = array();
+$gamesPlayed = array_fill(1,10,'');
+$winRateArr = array();
+$winRateArr = array_fill(1,10,'');
+$winRateStr = array();
+$winRateStr = array_fill(1,10,'');
 $sqlGetWinrate = "SELECT user.NICK, wins.nick, wins.win, wins.games FROM `user` JOIN `wins` on user.NICK = wins.nick;";
-$resultGetWinrate = mysqli_query($conn,$sqlGetWinrate);
+$resultGetWinrate = mysqli_query($conn, $sqlGetWinrate);
 $indexWinrate = 1;
 while($row = $resultGetWinrate->fetch_assoc()){
     $gamesPlayed[$indexWinrate] = $row['games'];
     $wins[$indexWinrate] = $row['win'];
-    if($gamesPlayed[$indexWinrate]!=0){
-        $winRateArr[$indexWinrate] = $wins[$indexWinrate]/$gamesPlayed[$indexWinrate]*100;
-        $winRateStr[$indexWinrate] = "Winrate: ".$winRateArr[$indexWinrate]."%";
-    }else{
-	$winRateStr[$indexWinrate] = "Not played yet";
-    }
+    $winRateArr[$indexWinrate] = $wins[$indexWinrate]/$gamesPlayed[$indexWinrate]*100;
+    $winRateStr[$indexWinrate] = "Winrate: ".$winRateArr[$indexWinrate]."%";
     // $funArg[$indexWinrate] = "winrate".$indexWinrate;
     $indexWinrate++;
 }
+for (; $indexWinrate <= 10; $indexWinrate++){
+    $winRateStr[$indexWinrate] = "Not played yet";
+}
 
 
-
-$losoweNicki = array('','','','','','','','','','',''); 
+$losoweNicki = array();
+$losoweNicki = array_fill(1,10,'');
 $sqlGetRandomNicks = "SELECT POSITION,NICK FROM `random_nicks`;";
 $resultGetRandomNicks = mysqli_query($conn,$sqlGetRandomNicks);
 while($row = $resultGetRandomNicks->fetch_assoc()){

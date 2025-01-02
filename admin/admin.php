@@ -83,37 +83,37 @@ if (isset($_GET['victory1'])){ //wygrana drużyna 1 otrzymuje pukt wina i gry w 
 
 
 
-    if (isset($_GET['victory2'])){  //wygrana drużyna 2 otrzymuje pukt wina i gry w bazie danych a pozostali otrzymują punkt gry
-        $sql11 = "SELECT NICK FROM random_nicks WHERE POSITION<=10";
-        $Vresult3 = mysqli_query($conn, $sql11);
-        $Vnicki2 = array('','','','','','','','','','');
-        if ($Vresult3->num_rows > 0) {
-            $index = 1;
-            while($Vrow = $Vresult3->fetch_assoc()) {
-                $Vnicki2[$index] = $Vrow['NICK'];
-                $sql12 = "SELECT nick from wins WHERE nick='$Vnicki2[$index]'";
-                $Vresult2 = mysqli_query($conn, $sql12);
-                $Vrow1 = $Vresult2->fetch_assoc();
-                if ($Vrow1 != NULL){
-                    $czyJest = $Vrow1['nick'];
-                }else{  
-                    $sql13 = "INSERT INTO wins(nick) VALUES ('$Vnicki2[$index]')";
-                    mysqli_query($conn, $sql13);
-                }
-                if($index >= 6) {
-                $sql17 = "UPDATE wins SET win = win + 1 where nick='$Vnicki2[$index]'";
-                $sql18 = "UPDATE wins SET games = games + 1 where nick='$Vnicki2[$index]'";
-                mysqli_query($conn, $sql17);
-                mysqli_query($conn, $sql18);
-                }
-                if($index <= 5){
-                $sql19 = "UPDATE wins SET games = games + 1 where nick='$Vnicki2[$index]'";
-                mysqli_query($conn, $sql19);
-                }
-                $index++;
+if (isset($_GET['victory2'])){  //wygrana drużyna 2 otrzymuje pukt wina i gry w bazie danych a pozostali otrzymują punkt gry
+    $sql11 = "SELECT NICK FROM random_nicks WHERE POSITION<=10";
+    $Vresult3 = mysqli_query($conn, $sql11);
+    $Vnicki2 = array('','','','','','','','','','');
+    if ($Vresult3->num_rows > 0) {
+        $index = 1;
+        while($Vrow = $Vresult3->fetch_assoc()) {
+            $Vnicki2[$index] = $Vrow['NICK'];
+            $sql12 = "SELECT nick from wins WHERE nick='$Vnicki2[$index]'";
+            $Vresult2 = mysqli_query($conn, $sql12);
+            $Vrow1 = $Vresult2->fetch_assoc();
+            if ($Vrow1 != NULL){
+                $czyJest = $Vrow1['nick'];
+            }else{  
+                $sql13 = "INSERT INTO wins(nick) VALUES ('$Vnicki2[$index]')";
+                mysqli_query($conn, $sql13);
             }
+            if($index >= 6) {
+            $sql17 = "UPDATE wins SET win = win + 1 where nick='$Vnicki2[$index]'";
+            $sql18 = "UPDATE wins SET games = games + 1 where nick='$Vnicki2[$index]'";
+            mysqli_query($conn, $sql17);
+            mysqli_query($conn, $sql18);
+            }
+            if($index <= 5){
+            $sql19 = "UPDATE wins SET games = games + 1 where nick='$Vnicki2[$index]'";
+            mysqli_query($conn, $sql19);
+            }
+            $index++;
         }
     }
+}
 
     
 

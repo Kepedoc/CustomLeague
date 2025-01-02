@@ -3,9 +3,11 @@
 function winrate(wr){
     let str = document.getElementById("winrate" + wr).innerText;
     let lastCh = str.charAt(str.length - 1);
-    if (lastCh != '%'){
-        let wins = document.getElementById("winrate" + wr).getAttribute("data-winrate");
-        document.getElementById("winrate" + wr).innerHTML = wins;
+    if (lastCh != '%' && str != "Not played yet"){
+        if (str != ""){
+            let wins = document.getElementById("winrate" + wr).getAttribute("data-winrate");
+            document.getElementById("winrate" + wr).innerHTML = wins;
+        }
     }else{
         let nick = document.getElementById("winrate" + wr).getAttribute("data-nick");
         document.getElementById("winrate" + wr).innerHTML = nick;
