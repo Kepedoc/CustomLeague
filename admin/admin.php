@@ -27,7 +27,8 @@ if ($conn->connect_error) {
 }
     $sql3 = "SELECT NICK FROM random_nicks";
     $result = mysqli_query($conn, $sql3);
-    $nicki = array('','','','','','','','','','','');
+    $nicki = array();
+    $nicki = array_fill(1,10,'');
     if ($result->num_rows > 0) {
         $index = 1; // Indeks do przypisania danych do odpowiednich divów
         while($row = $result->fetch_assoc()) {
@@ -52,7 +53,8 @@ if ($conn->connect_error) {
 if (isset($_GET['victory1'])){ //wygrana drużyna 1 otrzymuje pukt wina i gry w bazie danych a pozostali otrzymują punkt gry
     $sql6 = "SELECT NICK FROM random_nicks WHERE POSITION<=10";
     $Vresult = mysqli_query($conn, $sql6);
-    $Vnicki = array('','','','','','','','','','');
+    $Vnicki = array();
+    $Vnicki = array_fill(1,10,'');
     if ($Vresult->num_rows > 0) {
         $index = 1;
         while($Vrow = $Vresult->fetch_assoc()) {
@@ -86,7 +88,8 @@ if (isset($_GET['victory1'])){ //wygrana drużyna 1 otrzymuje pukt wina i gry w 
 if (isset($_GET['victory2'])){  //wygrana drużyna 2 otrzymuje pukt wina i gry w bazie danych a pozostali otrzymują punkt gry
     $sql11 = "SELECT NICK FROM random_nicks WHERE POSITION<=10";
     $Vresult3 = mysqli_query($conn, $sql11);
-    $Vnicki2 = array('','','','','','','','','','');
+    $Vnicki2 = array();
+    $Vnicki2 = array_fill(1,10,'');
     if ($Vresult3->num_rows > 0) {
         $index = 1;
         while($Vrow = $Vresult3->fetch_assoc()) {
@@ -156,7 +159,6 @@ if (isset($_GET['victory2'])){  //wygrana drużyna 2 otrzymuje pukt wina i gry w
         </div>
         <div class="mobileDiscord">
             <a href="https://discord.gg/Gyr6DQBq3u" target="_blank"><img class="discord" src="../discord2.1.png" alt="Discord-Link"></a>
-                <!-- <button class="discord-link"><a href="https://discord.gg/Gyr6DQBq3u">Discord Link</a></button> -->
             </div>
     </div>  
     <script src="../script.js"></script>
