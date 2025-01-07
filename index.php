@@ -52,6 +52,7 @@ if ($result->num_rows > 0) {
 
 if (isset($_POST['losuj'])){ // tworzenie tablicy z randomowymi nickami i wstawienie ich do bazy
     $losoweNicki = array();
+    $losoweNicki = array_fill(1,10,'');
     foreach($nicki as $x){
         $randIndex = rand(1,10);
         $powtuz = true;
